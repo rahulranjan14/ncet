@@ -1,0 +1,10 @@
+.signin-card{
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+}
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
