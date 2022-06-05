@@ -51,12 +51,21 @@ const SubmitTest = ({match}) => {
                 _id: match.params.testId
             },
             studentName: "",
+            fatherName: "",
+            interCollegeName: "",
+            interPrincipalName: "",
             contactNumber: "",
+            fatherContactNumber:"",
+            whatsappNumber: "",
+            aadharNumber: "",
             email: "",
+            place: "",
+            district: ""
+
         })
 
         // destructuring submitvalues
-        const { testId, studentName, contactNumber, email } =  submitValues
+        const { testId, studentName, fatherName, interCollegeName, interPrincipalName, contactNumber, fatherContactNumber, whatsappNumber, aadharNumber, email, place, district } =  submitValues
 
         //global answers object(to send to backend)
         const[answers, setAnswers] = useState([])
@@ -78,7 +87,7 @@ const SubmitTest = ({match}) => {
         const onSubmit = () => {
          
             // console.log("onsubmit trigerred",testId, studentName, contactNumber, email, answers)
-            submitResponse({testId, studentName, contactNumber, email, answers})
+            submitResponse({testId, studentName, fatherName, interCollegeName, interPrincipalName, contactNumber, fatherContactNumber, whatsappNumber, aadharNumber, email, place, district, answers})
             .then(data => {
                 //  console.log("submitted",data)
                 setShowAfterSubmitModal(true)
@@ -216,10 +225,26 @@ const SubmitTest = ({match}) => {
                 
                 <Form>
                     <Form.Group className="mb-3" controlId="formBasicName">
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label>Student Name</Form.Label>
                     <Form.Control type="text" placeholder="Enter Name" onChange={handleChange("studentName")} value={studentName} />
                     {nameErrorMessage()}
                     </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicName">
+                    <Form.Label>Father's Name</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Father's Name" onChange={handleChange("fatherName")} value={fatherName} />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicName">
+                    <Form.Label>Inter College Name</Form.Label>
+                    <Form.Control type="text" placeholder="Inter College Name" onChange={handleChange("interCollegeName")} value={interCollegeName} />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicName">
+                    <Form.Label>Inter Principal Name</Form.Label>
+                    <Form.Control type="text" placeholder="Inter Principal Name" onChange={handleChange("interPrincipalName")} value={interPrincipalName} />
+                    </Form.Group>
+                    
                 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
@@ -232,7 +257,34 @@ const SubmitTest = ({match}) => {
                     <Form.Control type="text" placeholder="Phone" onChange={handleChange("contactNumber")} value={contactNumber} />
                     {phoneErrorMessage()}
                     </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicPhone">
+                    <Form.Label>Father's Contact No.</Form.Label>
+                    <Form.Control type="text" placeholder="Father's phone" onChange={handleChange("fatherContactNumber")} value={fatherContactNumber} />
+                    </Form.Group>
                         
+
+                    <Form.Group className="mb-3" controlId="formBasicPhone">
+                    <Form.Label>Whatsapp No.</Form.Label>
+                    <Form.Control type="text" placeholder="Whatsapp No" onChange={handleChange("whatsappNumber")} value={whatsappNumber} />
+                 
+                    </Form.Group>    
+
+                    <Form.Group className="mb-3" controlId="formBasicPhone">
+                    <Form.Label>Aadhar No.</Form.Label>
+                    <Form.Control type="text" placeholder="Aadhar no" onChange={handleChange("aadharNumber")} value={aadharNumber} />
+                 
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicName">
+                    <Form.Label>Place</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Place" onChange={handleChange("place")} value={place} />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicName">
+                    <Form.Label>District</Form.Label>
+                    <Form.Control type="text" placeholder="Enter District" onChange={handleChange("district")} value={district} />
+                    </Form.Group>
                 </Form>
               
                 </Modal.Body>
