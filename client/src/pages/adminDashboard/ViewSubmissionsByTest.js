@@ -103,16 +103,30 @@ const ViewSubmissionsByTest = ({match}) => {
             <tbody>
                 <tr>
                     <th>Name</th>
+                    <th>Father's Name</th>
+                    <th>Inter College Name</th>
+                    <th>Inter Principal Name</th>
                     <th>Email</th>
-                    <th>Phone</th>
-                    <th>Score</th>
+                    <th>Phone No.</th>
+                    <th>Father's Phone No.</th>
+                    <th>whatsapp No.</th>
+                    <th>Place</th>
+                    <th>District</th>
+                    <th>Test Score</th>
                 </tr>
                 {submissions && submissions.map(submission => {
                     return(
                         <tr key={submission._id}>
                             <td className="px-2 py-2">{submission.studentName}</td>
+                            <td className="px-2 py-2">{submission.fatherName}</td>
+                            <td className="px-2 py-2">{submission.interCollegeName}</td>
+                            <td className="px-2 py-2">{submission.interPrincipalName}</td>
                             <td className="px-2 py-2">{submission.email}</td>
                             <td className="px-2 py-2">{submission.contactNumber}</td>
+                            <td className="px-2 py-2">{submission.fatherContactNumber}</td>
+                            <td className="px-2 py-2">{submission.whatsappNumber}</td>
+                            <td className="px-2 py-2">{submission.place}</td>
+                            <td className="px-2 py-2">{submission.district}</td>
                             <td className="px-2 py-2">{submission.score}</td>
                         </tr>
                     )
