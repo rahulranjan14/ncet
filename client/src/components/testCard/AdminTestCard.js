@@ -59,7 +59,7 @@ const AdminTestCard = ({testName="", testId="", startTime="", endTime="", testDe
             <Card.Text style={{fontSize:'0.9em'}} className="mt-2 mb-2 text-dark">Test Id : <br/> {testId}
             </Card.Text>
 
-            <Card.Text style={{fontSize:'0.9em'}} className="mt-2 mb-2 text-dark">Test Id : <br/> {`${process.env.REACT_APP_BASE_URL}/test/submit/${testId}`}
+            <Card.Text style={{fontSize:'0.9em'}} className="mt-2 mb-2 text-dark">Test url : <br/> {`${process.env.REACT_APP_BASE_URL}/test/submit/${testId}`}
             </Card.Text>
 
         </Card.Body>
