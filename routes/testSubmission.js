@@ -4,7 +4,8 @@ const router = express.Router()
 const { 
     submitResponse,
     getAllTestSubmissions,
-    getTestSubmissionsByTest 
+    getTestSubmissionsByTest,
+    checkSubmissionExists
  } = require("../controllers/testSubmission")
 
  const { isSignedIn, isAuthenticated, isAdmin } = require("../controllers/auth")
@@ -19,6 +20,8 @@ router.get("/")
 router.get("/testSubmissions/:userId", isSignedIn, isAuthenticated, isAdmin, getAllTestSubmissions)
 
 router.post("/test/testSubmissions/:userId", isSignedIn, isAuthenticated, isAdmin, getTestSubmissionsByTest)
+
+router.get("/submissions/exists/:aadhar",checkSubmissionExists)
 
 
 
