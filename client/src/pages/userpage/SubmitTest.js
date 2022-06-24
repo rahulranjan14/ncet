@@ -153,12 +153,28 @@ const SubmitTest = ({match}) => {
                   
                   axios(config)
                   .then(function (response) {
-                    console.log(JSON.stringify(response.data));
-                    console.log("len", response.data.length)
-                    if(response.data.length === 0){
+                    // console.log(JSON.stringify(response.data));
+                    // console.log("len", response.data.length)
+
+                    let testSubmissionsTemp = []
+
+                    for (let i = 0; i < response.data.length; i++) {
+                        // console.log("api testid",response.data[i].testId);
+                        // console.log("api currentid",testId._id);
+                        // console.log("api currentid",typeof(testId));
+                        // console.log(response.data[i].testId == testId._id)
+
+                        if(response.data[i].testId === testId._id){
+                            // console.log("inside nested if")
+                            testSubmissionsTemp.push(response.data[i])
+                        }
+                        
+                    }
+
+                    if(testSubmissionsTemp.length === 0){
                       setShowFormModal(false)
                     }
-                    else if(response.data.length > 0){
+                    else if(testSubmissionsTemp.length > 0){
                       setShowFormModal(false)
                       setTestGiven(true)
                     }
