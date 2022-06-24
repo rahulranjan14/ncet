@@ -29,6 +29,8 @@ const SubmitTest = ({match}) => {
         //for loading screen
         const [loading, setLoading] = useState(true)
 
+        const [testgiven, setTestGiven] = useState(false)
+
         //for formMOdal
         const [showFormModal, setShowFormModal] = useState(true);
         const [showAfterSubmitModal, setShowAfterSubmitModal] = useState(false);
@@ -44,6 +46,7 @@ const SubmitTest = ({match}) => {
         const [nameError, setNameError] = useState(false)
         const [emailError, setEmailError] = useState(false)
         const [phoneError, setPhoneError] = useState(false)
+        const [aadharError, setAadharError] = useState(false)
 
         //object to be send for submiting response
         const [submitValues, setSubmitValues] = useState({
@@ -80,6 +83,7 @@ const SubmitTest = ({match}) => {
             if(name == "studentName"){setNameError(false)}
             if(name == "email"){setEmailError(false)}
             if(name == "contactNumber"){setPhoneError(false)}
+            if(name == "aadharNumber"){setAadharError(false)}
         }
 
 
@@ -136,11 +140,40 @@ const SubmitTest = ({match}) => {
             nameErrorMessage()
             emailErrorMessage()
             phoneErrorMessage()
-            if(nameChecker() === true && emailChecker() === true && phoneChecker() === true  )
+            aadharErrorMessage()
+            if(nameChecker() === true && emailChecker() === true && phoneChecker() === true  && aadharChecker() == true )
             {
-                setShowFormModal(false)
+                // setShowFormModal(false)
+
+                var config = {
+                    method: 'get',
+                    url: `${API}/submissions/exists/${aadharNumber}`,
+                    headers: { }
+                  };
+                  
+                  axios(config)
+                  .then(function (response) {
+                    console.log(JSON.stringify(response.data));
+                    console.log("len", response.data.length)
+                    if(response.data.length === 0){
+                      setShowFormModal(false)
+                    }
+                    else if(response.data.length > 0){
+                      setShowFormModal(false)
+                      setTestGiven(true)
+                    }
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  
+                  
+                  });
             }
     
+           
+
+
+
             
         }
         
@@ -180,6 +213,15 @@ const SubmitTest = ({match}) => {
             return true
         }
 
+        const aadharChecker = () => {
+            if(aadharNumber.length !== 12){
+                setAadharError(true)
+                return false
+            }
+            else
+            return true
+        }
+
 
         //form error messages
         const nameErrorMessage = () => {
@@ -206,6 +248,41 @@ const SubmitTest = ({match}) => {
             }
         }
 
+        const aadharErrorMessage = () => {
+            // console.log("phone error running")
+            // console.log("phone error",phoneError)
+            if(aadharError === true){
+            return <p style={{fontSize:'0.9em'}} className="text-danger">Please Enter a valid aadhar number</p>
+            }
+        }
+
+        const testGivenModal = () => {
+            return(
+                <Modal
+                show={testgiven}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+                size="lg"
+                >
+
+                    <Modal.Body>
+                        <div className='my-5 mx-5'>
+                        <h1>You have already responded.</h1>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                <Link style={{textDecoration:'none'}} to="/">
+                    <Button variant="secondary" className="px-5">
+                        
+                        <span style={{color:'#fff'}}>Ok</span>
+                       
+                    </Button>
+                </Link>    
+                </Modal.Footer>
+                </Modal>
+            )
+        }
 
         //form modal
         const formModal = () => {
@@ -273,7 +350,7 @@ const SubmitTest = ({match}) => {
                     <Form.Group className="mb-3" controlId="formBasicPhone">
                     <Form.Label>Aadhar No.</Form.Label>
                     <Form.Control type="text" placeholder="Aadhar no" onChange={handleChange("aadharNumber")} value={aadharNumber} />
-                 
+                    {aadharErrorMessage()}
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicName">
@@ -608,6 +685,7 @@ const SubmitTest = ({match}) => {
            
            {somethingWentWrong()}
 
+{testGivenModal()}
 
             <FooterBar />
            </>

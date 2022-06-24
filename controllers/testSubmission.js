@@ -112,6 +112,22 @@ exports.getAllTestSubmissions = (req, res) => {
 }
 
 
+exports.checkSubmissionExists = (req, res) => {
+    let receivedAadharNumber = req.params.aadhar
+    console.log(req.params.aadhar)
+    
+    TestSubmission.find({aadharNumber: receivedAadharNumber}).sort([["updatedAt", "desc" ]]).exec((err, testSubmissions) => {
+        if(err || !testSubmissions){
+            return res.status(400).json({
+                error: "No test submissions found"
+            })
+        }
+
+    
+        res.json(testSubmissions)
+    })
+} 
+
 
 exports.getTestSubmissionsByTest = (req, res) => {
 
