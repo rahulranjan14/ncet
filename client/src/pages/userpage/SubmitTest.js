@@ -628,9 +628,13 @@ const SubmitTest = ({match}) => {
                         <Row>
                             <Col lg={{order: 'first', span: 6}} md={{order: 'first', span: 6}} sm={{order: 'last', span:12}} xs={{order: 'last', span: 12}} style={{display:'flex', flexDirection:'column-reverse', minWidth:'100px' }}><h2 className="mt-2 mb-2"> {testValues.name} </h2></Col>
                             <Col lg={{order: 'last', span: 6}} md={{order: 'last', span: 6}} sm={{order: 'first', span: 12}} xs={{order: 'first', span: 12}} style={{textAlign:'right', minWidth:'100px', display:'block'}} >
-                              <span style={{fontSize:'0.9em'}}>  {studentName} </span> <br/>
+                              {/* <span style={{fontSize:'0.9em'}}>  {studentName} </span> <br/>
                               <span style={{fontSize:'0.9em'}}>  {contactNumber} </span> <br/>
-                              <span style={{fontSize:'0.9em'}}> {email} </span> 
+                              <span style={{fontSize:'0.9em'}}> {email} </span>  */}
+
+                              <span style={{fontSize:'0.9em'}}>N Venugopal Reddy </span> <br/>
+                              <span style={{fontSize:'0.8em'}}>- Director-Admissions </span> <br/>
+                              <span style={{fontSize:'0.9em'}}>+919949166771, +919985165771 </span> 
                             </Col>
                         </Row>
                     </Container>
