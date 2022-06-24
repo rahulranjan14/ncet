@@ -110,6 +110,7 @@ const ViewSubmissionsByTest = ({match}) => {
                     <th>Phone No.</th>
                     <th>Father's Phone No.</th>
                     <th>whatsapp No.</th>
+                    <th>Aadhar No.</th>
                     <th>Place</th>
                     <th>District</th>
                     <th>Test Score</th>
@@ -125,6 +126,7 @@ const ViewSubmissionsByTest = ({match}) => {
                             <td className="px-2 py-2">{submission.contactNumber}</td>
                             <td className="px-2 py-2">{submission.fatherContactNumber}</td>
                             <td className="px-2 py-2">{submission.whatsappNumber}</td>
+                            <td className="px-2 py-2">{submission.aadharNumber}</td>
                             <td className="px-2 py-2">{submission.place}</td>
                             <td className="px-2 py-2">{submission.district}</td>
                             <td className="px-2 py-2">{submission.score}</td>
