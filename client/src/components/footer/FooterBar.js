@@ -21,8 +21,9 @@ const FooterBar = () => {
                         <p className="queries-text">For any Queries reach out to us at:</p>
                     
                         <div className="contact-links">
-                            <RiMailOpenFill size="1.3em" color="#fff" /> <a href="mailto:principal@ncetmail.com" className="text-link">principal@ncetmail.com</a> 
-                            <RiPhoneFill size="1.3em" color="#fff" style={{marginLeft:"25px"}} /> <a href="tel:8067462701" className="text-link">8067462701</a>
+                            {/* <RiMailOpenFill size="1.3em" color="#fff" /> <a href="mailto:principal@ncetmail.com" className="text-link">principal@ncetmail.com</a>  */}
+                            <RiPhoneFill size="1.3em" color="#fff"  /> <a href="tel:9949166771" className="text-link">+91 99491 66771</a> <br/>
+                            <RiPhoneFill size="1.3em" color="#fff"  /> <a href="tel:9985165771" className="text-link">+91 99851 65771</a>
                         </div>
                         
                     </Col>
