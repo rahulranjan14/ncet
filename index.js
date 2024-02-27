@@ -55,7 +55,7 @@ mongoose.connect(process.env.DATABASE,
 
 
 //server creation
-const port = process.env.PORT || 7000
+const port = process.env.PORT || 9000
 
 app.listen(port, () => {
   console.log(`app listening at http://localhost:${port}`)
